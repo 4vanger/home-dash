@@ -1,0 +1,8 @@
+{
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "^1.6.2",
+    "html-webpack-plugin": "^2.28.0",
+    "webpack": "^2.2.1"
+  }
+}
