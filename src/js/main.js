@@ -1,2 +1,2 @@
-require('angular')
+require('angular');
 require('./bootstrap');
