@@ -1,3 +1,13 @@
-window.app = angular.module('FamilyDashboard', []);
+angular.module('DashTemplates', []);
+window.app = angular.module('FamilyDashboard', ['DashTemplates']);
 
-angular.bootstrap(document.body, ['FamilyDashboard']);
+function requireAll(requireContext) {
+    return requireContext.keys().map(requireContext);
+}
+
+// Include all directives
+// TODO include in smart one with cross-dependencies
+requireAll(require.context('./directives/', true, /\.js$/));
+
+var appContainer = document.body;
+angular.bootstrap(appContainer, ['FamilyDashboard']);
