@@ -2,10 +2,19 @@ var webpack = require("webpack");
 
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-webpack');
 
     var webpackConfig = require("./webpack.config.js");
     grunt.initConfig({
+        express: {
+            options: {},
+            dev: {
+                options: {
+                    script: 'config/dev/express.js'
+                }
+            }
+        },
         webpack: {
             options: webpackConfig,
             build: {
@@ -42,7 +51,7 @@ module.exports = function(grunt) {
     // Advantage: No server required, can run app from filesystem
     // Disadvantage: Requests are not blocked until bundle is available,
     //               can serve an old app on too fast refresh
-    grunt.registerTask("dev", ["webpack:build-dev", "watch:app"]);
+    grunt.registerTask("dev", ["webpack:build-dev", "express:dev", "watch:app"]);
 
     // Production build
     grunt.registerTask("prod", ["webpack:build"]);
