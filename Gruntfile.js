@@ -25,7 +25,6 @@ module.exports = function(grunt) {
                             "NODE_ENV": JSON.stringify("production")
                         }
                     }),
-                    new webpack.optimize.DedupePlugin(),
                     new webpack.optimize.UglifyJsPlugin()
                 )
             },
@@ -35,7 +34,7 @@ module.exports = function(grunt) {
         },
         watch: {
             app: {
-                files: ["src/**/*.js"],
+                files: ["src/**"],
                 tasks: ["webpack:build-dev"],
                 options: {
                     spawn: false,

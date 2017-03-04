@@ -1,4 +1,4 @@
-
+const angular = require('angular');
 // init modules
 angular.module('DashTemplates', []);
 window.app = angular.module('FamilyDashboard', ['DashTemplates']);
@@ -13,7 +13,7 @@ requireAll(require.context('./controllers/', true, /\.js$/));
 
 function loadBootstrapApi() {
 	return new Promise(function (resolve, reject) {
-		var xhr = new XMLHttpRequest();
+		const xhr = new XMLHttpRequest();
 		xhr.open('GET', '/api/bootstrap.json');
 		xhr.onload = function () {
 			var apiResponse = JSON.parse(xhr.response);
@@ -31,11 +31,10 @@ function loadBootstrapApi() {
 }
 
 function startApp() {
-	var appContainer = document.body;
+	const appContainer = document.body;
 	angular.bootstrap(appContainer, ['FamilyDashboard']);
 	return Promise.resolve();
 }
 
 loadBootstrapApi()
 	.then(startApp);
-
