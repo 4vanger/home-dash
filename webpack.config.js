@@ -1,7 +1,7 @@
-var webpack = require("webpack");
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var webpackConfig = {
+const webpack = require("webpack");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+let webpackConfig = {
 	entry: './src/entry.js',
 	output: {
 		path: 'dist',
@@ -17,6 +17,7 @@ var webpackConfig = {
 			title: 'Family Dashboard',
 			hash: true,
 			template: './html-webpack-template.ejs',
+			inject: false,
 		}),
 	],
 	module: {
@@ -25,8 +26,17 @@ var webpackConfig = {
 				test: /\.html$/,
 				use: [
 					{
-						// loader: 'ng-cache-loader?module=DashTemplates',
-						loader: 'raw-loader',
+						loader: 'ng-cache-loader?module=DashTemplates',
+						// loader: 'raw-loader',
+					},
+				],
+			},
+			{
+				test: /\.js/,
+				use: [
+					{
+						// annotate angular DI injections so files can be minimized safely
+						loader: 'ng-annotate-loader',
 					},
 				],
 			},
@@ -45,7 +55,6 @@ var webpackConfig = {
 					{
 						loader: "sass-loader", // compiles Sass to CSS
 						options: {
-							// includePaths: ['src/sass/main.sass',],
 							sourceMap: true,
 						},
 					},

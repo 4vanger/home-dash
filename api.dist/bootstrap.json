@@ -1,0 +1,15 @@
+{
+  "data": {
+    "username": "<username>",
+    "components": [
+      {
+        "id": 10,
+        "type": "calendar",
+        "options": {
+          "calendar": "<calendarId>@group.calendar.google.com",
+          "ctz": "America/Los_Angeles"
+        }
+      }
+    ]
+  }
+}

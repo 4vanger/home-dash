@@ -1,7 +1,13 @@
 const angular = require('angular');
 // init modules
 angular.module('DashTemplates', []);
-window.app = angular.module('FamilyDashboard', ['DashTemplates']);
+window.app = angular.module('FamilyDashboard', ['DashTemplates', 'ui.bootstrap']).config(function ($sceDelegateProvider) {
+	// TODO components needs to whitelist URLs by their own
+	$sceDelegateProvider.resourceUrlWhitelist([
+		'self',
+		'https://calendar.google.com/calendar/embed?**', // Calendar component
+	])
+});
 
 // Include all directives
 // TODO include in smart one with cross-dependencies
@@ -16,7 +22,7 @@ function loadBootstrapApi() {
 		const xhr = new XMLHttpRequest();
 		xhr.open('GET', '/api/bootstrap.json');
 		xhr.onload = function () {
-			var apiResponse = JSON.parse(xhr.response);
+			const apiResponse = JSON.parse(xhr.response);
 			// TODO check for error responses
 
 			// save data
