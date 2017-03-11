@@ -24,7 +24,9 @@ function loadBootstrapApi() {
 		xhr.onload = function () {
 			const apiResponse = JSON.parse(xhr.response);
 			// TODO check for error responses
-
+			if(IS_DEV) {
+				console.log('Bootstrap data received from server: ', apiResponse);
+			}
 			// save data
 			window.app.constant('bootstrapData', apiResponse.data);
 			resolve();

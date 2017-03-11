@@ -5,6 +5,7 @@
       {
         "id": 10,
         "type": "calendar",
+        "title": "Calendar name",
         "options": {
           "calendar": "<calendarId>@group.calendar.google.com",
           "ctz": "America/Los_Angeles"

@@ -1,6 +1,10 @@
 const webpack = require("webpack");
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const isProduction = process.env.NODE_ENV == 'prod'
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
+
 let webpackConfig = {
 	entry: './src/entry.js',
 	output: {
@@ -18,6 +22,10 @@ let webpackConfig = {
 			hash: true,
 			template: './html-webpack-template.ejs',
 			inject: false,
+		}),
+		new webpack.DefinePlugin({
+			IS_PRODUCTION: JSON.stringify(isProduction),
+			IS_DEV: JSON.stringify(isDev),
 		}),
 	],
 	module: {

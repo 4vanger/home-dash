@@ -1,10 +1,10 @@
 const _ = require('lodash');
 const util = require('util');
 
-window.app.directive('dashCalendarComponent', function () {
+window.app.directive('dashComponentCalendar', function () {
 	return {
 		require: ['component'],
-		restrict: 'A',
+		restrict: 'E',
 		template: require('partials/calendar.html'),
 		scope: {
 			component: '='

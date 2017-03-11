@@ -6,7 +6,9 @@
         <p>Hello, {{bootstrapData.username}}</p>
     </div>
     <div class="row">
-        <div class="col-md-6" dash-calendar-component component="bootstrapData.components[0]">
-        </div>
+        <dash-component
+          ng-repeat="component in bootstrapData.components track by component.id"
+          component="component">
+        </dash-component>
     </div>
 </div>

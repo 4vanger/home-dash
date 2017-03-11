@@ -1,6 +1,11 @@
 {
+  "scripts": {
+    "start": "NODE_ENV=dev grunt",
+    "prod": "NODE_ENV=prod grunt"
+  },
   "devDependencies": {
     "angular": "^1.6.2",
+
     "angular-ui-bootstrap": "^2.5.0",
     "bootstrap-sass": "^3.3.7",
     "css-loader": "^0.26.2",
